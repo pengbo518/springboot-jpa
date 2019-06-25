@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @version: v1.0
  * @create: 2019-06-24 23:20
  **/
-public interface UserDao extends JpaRepository<UserEntity, Integer> {
+public interface UserDao extends JpaRepository<UserEntity, Long> {
 
 }
