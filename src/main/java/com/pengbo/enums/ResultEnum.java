@@ -4,7 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum ResultEnum {
-	SUCCESS(0, "成功");
+	SUCCESS(0, "成功"),
+	USER_NOT_EXIST(-1, "暂无该用户");
 
 	private Integer code;
 
