@@ -2,11 +2,9 @@ package com.pengbo.entity;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import lombok.Data;
@@ -17,10 +15,11 @@ import lombok.Data;
 @Entity
 @Table(name = "tb_user")
 @DynamicUpdate
+@DynamicInsert
 @Data
 public class UserEntity {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private Integer age;

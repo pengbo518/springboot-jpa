@@ -34,6 +34,26 @@ public interface UserService {
      */
     UserEntity findById(Long id);
 
+    /**
+     * 通过ID修改用户
+     * @param userDto
+     * @return
+     */
     UserDto updateUserById(UserDto userDto);
+
+    /**
+     * 添加用户
+     * @param userDto
+     * @return
+     */
+    UserDto addUser(UserDto userDto);
+
+    /**
+     * 通过ID删除用户
+     * @param id
+     * @return
+     */
+    boolean deleteById(Long id);
+
 
 }

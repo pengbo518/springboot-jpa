@@ -79,8 +79,37 @@ public class UserController {
         return ResultVOUtil.success(result);
     }
 
+    /**
+     * 添加用户信息
+     * @param name
+     * @param age
+     * @param height
+     * @param weight
+     * @return
+     */
+    @PostMapping("/addUser")
+    public ResponseEntity addUser(String name, Integer age, Double height, Double weight){
+        UserDto userDto = new UserDto();
+        userDto.setName(name);
+        userDto.setAge(age);
+        userDto.setHeight(height);
+        userDto.setWeight(weight);
+        UserDto result = userService.addUser(userDto);
+        return ResultVOUtil.success(result);
+    }
 
-
-
+    /**
+     * 通过ID删除用户信息
+     * @param id
+     * @return
+     */
+    @DeleteMapping("/deleteById/{id}")
+    public ResponseEntity deleteById(@PathVariable Long id){
+        boolean result = userService.deleteById(id);
+        if(!result){
+            return ResultVOUtil.error(ResultEnum.DELETE_FAILED);
+        }
+        return ResultVOUtil.success(result);
+    }
 
 }

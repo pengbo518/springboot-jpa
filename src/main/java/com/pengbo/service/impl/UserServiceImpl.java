@@ -6,6 +6,7 @@ import com.pengbo.entity.UserEntity;
 import com.pengbo.enums.ResultEnum;
 import com.pengbo.exception.BaseException;
 import com.pengbo.service.UserService;
+import com.pengbo.utils.IdGenerator;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -55,5 +56,25 @@ public class UserServiceImpl implements UserService {
         UserEntity user = userDao.save(userEntity);
         BeanUtils.copyProperties(user, userDto);
         return userDto;
+    }
+
+    @Override
+    public UserDto addUser(UserDto userDto) {
+        UserEntity userEntity = new UserEntity();
+        BeanUtils.copyProperties(userDto, userEntity);
+        UserEntity user = userDao.save(userEntity);
+        BeanUtils.copyProperties(user, userDto);
+        return userDto;
+    }
+
+    @Override
+    public boolean deleteById(Long id) {
+        boolean result = false;
+        Optional<UserEntity> userEntity = userDao.findById(id);
+        if(userEntity.isPresent()){
+            userDao.deleteById(id);
+            result = true;
+        }
+        return result;
     }
 }

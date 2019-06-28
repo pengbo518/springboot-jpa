@@ -5,7 +5,8 @@ import lombok.Getter;
 @Getter
 public enum ResultEnum {
 	SUCCESS(0, "成功"),
-	USER_NOT_EXIST(-1, "暂无该用户");
+	USER_NOT_EXIST(1000, "暂无该用户"),
+	DELETE_FAILED(1001, "删除用户失败");
 
 	private Integer code;
 
